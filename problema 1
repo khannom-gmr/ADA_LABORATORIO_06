@@ -1,0 +1,56 @@
+#include <iostream>
+#include<vector>
+using namespace std;
+
+//1-QUICK SORT
+void imprimir(int arreglo[],int longitud){
+	for(int i=0;i<longitud;i++){
+		cout<<arreglo[i]<<" ";
+	}
+	cout<<endl;
+}
+
+int Particion(int arreglo[], int inicio, int fin)
+{
+	 int pivote=arreglo[fin];
+	 int i=inicio-1;
+
+	 int auxiliar;
+
+	 for(int j=inicio;j<fin;j++){
+			if(arreglo[j]<=pivote){
+				i=i+1;
+				auxiliar=arreglo[i];
+				arreglo[i]=arreglo[j];
+				arreglo[j]=auxiliar;
+			}
+	 }
+	 auxiliar=arreglo[i+1];
+	 arreglo[i+1]=arreglo[fin];
+	 arreglo[fin]=auxiliar;
+	return i+1;
+
+}
+void QuickSort(int arreglo[], int inicio, int fin)
+{
+	if(inicio<fin){
+		int medio=Particion(arreglo,inicio,fin);
+		QuickSort(arreglo,inicio,medio-1);
+
+		QuickSort(arreglo,medio+1,fin);
+	}
+}
+int main()
+{
+    int arreglo[] = {19, 12, 5, 1, 3, 311, 234};
+    int longitud = sizeof(arreglo)/sizeof(arreglo[0]);
+
+    cout << "Antes :" << endl;
+    imprimir(arreglo, longitud);
+
+    QuickSort(arreglo, 0, longitud-1);
+
+    cout << "Despues:" << endl;
+    imprimir(arreglo, longitud);
+    return (0);
+}
