@@ -4,7 +4,7 @@ using namespace std;
 
 //1-QUICK SORT
 
-
+//prueba en mari
 int Particion(int arreglo[], int inicio, int fin)
 {
 	 int pivote=arreglo[fin];
